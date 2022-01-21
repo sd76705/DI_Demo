@@ -1,35 +1,34 @@
-﻿namespace DI_Demo.Model.LifeTime
+﻿namespace DI_Demo.Model.LifeTime;
+
+public class LifeTimeSample
 {
-    public class LifeTimeSample
+    public interface ISample
     {
-        public interface ISample
+        int Id { get; }
+    }
+
+    public interface ISampleTransient : ISample
+    {
+    }
+
+    public interface ISampleScoped : ISample
+    {
+    }
+
+    public interface ISampleSingleton : ISample
+    {
+    }
+
+    public class Sample : ISampleTransient, ISampleScoped, ISampleSingleton
+    {
+        private static int _counter;
+        private int _id;
+
+        public Sample()
         {
-            int Id { get; }
+            _id = ++_counter;
         }
 
-        public interface ISampleTransient : ISample
-        {
-        }
-
-        public interface ISampleScoped : ISample
-        {
-        }
-
-        public interface ISampleSingleton : ISample
-        {
-        }
-
-        public class Sample : ISampleTransient, ISampleScoped, ISampleSingleton
-        {
-            private static int _counter;
-            private int _id;
-
-            public Sample()
-            {
-                _id = ++_counter;
-            }
-
-            public int Id => _id;
-        }
+        public int Id => _id;
     }
 }
