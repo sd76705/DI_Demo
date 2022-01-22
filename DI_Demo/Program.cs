@@ -7,16 +7,15 @@ using static DI_Demo.Model.LifeTime.LifeTimeSample;
 var builder = WebApplication.CreateBuilder(args);
 
 
-//¨Ï¥ÎDI ¬°Inserfaceª`¤J¹ê§@
+//ä½¿ç”¨DI ç‚ºInserfaceæ³¨å…¥å¯¦ä½œ
 builder.Services.AddSingleton<IProductBL, ProductBL>(); // Product BL
 builder.Services.AddSingleton<IProductDAL, ProductDAL>(); // Product DAL
 
-#region DI ¥Í©R¶g´Á ½d¨Ò
+#region DI ç”Ÿå‘½é€±æœŸ ç¯„ä¾‹
 builder.Services.AddTransient<ISampleTransient, Sample>(); //Transient
 builder.Services.AddScoped<ISampleScoped, Sample>(); //Scoped
 builder.Services.AddSingleton<ISampleSingleton, Sample>(); //Singleton 
-
-builder.Services.AddTransient<CustomService, CustomService>();
+ 
 #endregion
 
 
